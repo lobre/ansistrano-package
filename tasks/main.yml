@@ -1,0 +1,19 @@
+---
+
+- include: "{{ ansistrano_before_setup_tasks_file | default('empty.yml') }}"
+
+- include: setup.yml
+
+- include: "{{ ansistrano_after_setup_tasks_file | default('empty.yml') }}"
+
+- include: "{{ ansistrano_before_git_tasks_file | default('empty.yml') }}"
+
+- include: git.yml
+
+- include: "{{ ansistrano_after_git_tasks_file | default('empty.yml') }}"
+
+- include: "{{ ansistrano_before_cleanup_tasks_file | default('empty.yml') }}"
+
+- include: cleanup.yml
+
+- include: "{{ ansistrano_after_cleanup_tasks_file | default('empty.yml') }}"

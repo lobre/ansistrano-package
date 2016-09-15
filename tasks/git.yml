@@ -1,0 +1,25 @@
+---
+- name: ANSISTRANO | Update remote repository
+  git:
+    repo: "{{ ansistrano_git_repo }}"
+    dest: "{{ ansistrano_package }}/repo"
+    version: "{{ ansistrano_git_branch }}"
+    accept_hostkey: true
+    update: yes
+    force: yes
+
+- name: ANSISTRANO | Set git_real_repo_tree
+  set_fact:
+    ansistrano_git_real_repo_tree: "{{ ansistrano_git_repo_tree | trim | regex_replace('^[/]*', '') | regex_replace('[/]*$', '') }}"
+
+- name: ANSISTRANO | Archive and unarchive repo to package path
+  shell: git archive --format=tar {{ ansistrano_git_branch }} | tar -x -f - -C "{{ ansistrano_package }}/package"
+  args:
+    chdir: "{{ ansistrano_package }}/repo"
+  when: ansistrano_git_real_repo_tree == ""
+
+- name: ANSISTRANO | Archive and unarchive subtree["{{ ansistrano_git_real_repo_tree }}"] of repo to release path
+  shell: git archive --format=tar {{ ansistrano_git_branch }} "{{ ansistrano_git_real_repo_tree }}" | tar -x --strip-components "{{ ansistrano_git_real_repo_tree.split('/') | length }}" -f - -C "{{ ansistrano_package }}/package"
+  args:
+    chdir: "{{ ansistrano_package }}/repo"
+  when: ansistrano_git_real_repo_tree != ""

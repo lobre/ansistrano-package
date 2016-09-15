@@ -1,0 +1,31 @@
+---
+# Path where the code must be packaged
+ansistrano_package: "{{ lookup('env','HOME') }}/.ansistrano-package"
+
+# Shared paths to symlink to release dir
+ansistrano_shared_paths: []
+
+# Shared files to symlink to release dir
+ansistrano_shared_files: []
+
+# Unwanted paths
+ansistrano_unwanted_paths: []
+
+# Git variables
+ansistrano_git_repo: git@github.com:USERNAME/REPO.git
+ansistrano_git_branch: master
+ansistrano_git_repo_tree: ""
+
+# Env cleaner
+ansistrano_env_cleaner_code: "env_code"
+ansistrano_env_cleaner_wrap_char: "__"
+# Mode of env cleaner
+# 0 is code at the beginning of filename
+# 1 is code just before extension
+# 2 is code at the end of filename
+ansistrano_env_cleaner_mode: 1
+ansistrano_disable_env_cleaner: no
+
+# Changelog
+ansistrano_changelog_file: changelog.j2
+ansistrano_disable_changelog: no

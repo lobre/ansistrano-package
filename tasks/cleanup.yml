@@ -1,0 +1,27 @@
+---
+- name: ANSISTRANO | Clean files and folder according to environment
+  command: "python env_cleaner.py -e {{ ansistrano_env_cleaner_code }} -w '{{ ansistrano_env_cleaner_wrap_char }}' -m {{ ansistrano_env_cleaner_mode }} -p {{ ansistrano_package }}/package"
+  args:
+    chdir: "{{ role_path }}/files"
+  when: not ansistrano_disable_env_cleaner
+
+- name: ANSISTRANO | Insert changelog file
+  template:
+    src: "{{ ansistrano_changelog_file }}"
+    dest: "{{ ansistrano_package }}/package/CHANGELOG"
+  when: not ansistrano_disable_changelog
+
+- name: ANSISTRANO | Delete unwanted paths
+  file:
+    state: absent
+    path: "{{ ansistrano_package }}/package/{{ item }}"
+  with_items: "{{ ansistrano_unwanted_paths }}"
+
+- name: ANSISTRANO | Delete shared paths and files
+  file:
+    state: absent
+    path: "{{ ansistrano_package }}/package/{{ item }}"
+  with_flattened:
+    - "{{ ansistrano_shared_paths }}"
+    - "{{ ansistrano_shared_files }}"
+

@@ -1,0 +1,15 @@
+---
+- name: ANSISTRANO | Ensure package base path exists
+  file:
+    state: directory
+    path: "{{ ansistrano_package }}"
+
+- name: ANSISTRANO | Remove last local package directory
+  file:
+    state: absent
+    path: "{{ ansistrano_package }}/package"
+
+- name: ANSISTRANO | Create clean package directory
+  file:
+    state: directory
+    path: "{{ ansistrano_package }}/package"

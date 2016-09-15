@@ -1,0 +1,13 @@
+---
+- name: Create a package of my app
+  hosts: all
+  connection: local
+
+  vars:
+    ansistrano_package: /my/local/path
+    ansistrano_git_repo: git@github.com:USERNAME/REPO.git
+    ansistrano_git_branch: mybranch
+    ansistrano_disable_env_cleaner: yes
+
+  roles:
+    - { role: ansistrano-package }
