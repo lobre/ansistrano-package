@@ -22,6 +22,12 @@ And then install it with.
 
     $ ansible-galaxy install -p roles -r requirements.yml
 
+## Update
+
+If you want to update the role, you need to pass --force parameter when installing. Please, check the following command.
+
+    $ ansible-galaxy install --force -p roles -r requirements.yml
+
 ## Role Variables
 
     - vars:

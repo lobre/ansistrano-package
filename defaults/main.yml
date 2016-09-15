@@ -1,6 +1,6 @@
 ---
 # Path where the code must be packaged
-ansistrano_package: "{{ lookup('env','HOME') }}/.ansistrano-package"
+ansistrano_package: "{{ lookup('env','HOME') }}/.ansistrano"
 
 # Shared paths to symlink to release dir
 ansistrano_shared_paths: []
