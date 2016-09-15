@@ -11,16 +11,16 @@ The variables are fully compatible with Ansistrano variables.
 
 ## Installation
 
-In order to install Ansistrano package, deploy and rollback roles you can create a `roles.yml` file for instance.
+In order to install Ansistrano package, deploy and rollback roles you can create a `requirements.yml` file for instance.
 
-    # roles.yml
+    # requirements.yml
     - src: carlosbuenosvinos.ansistrano-deploy
     - src: carlosbuenosvinos.ansistrano-rollback
     - src: https://github.com/loric-/ansistrano-package.git
 
 And then install it with.
 
-    $ ansible-galaxy install -p roles -r roles.yml
+    $ ansible-galaxy install -p roles -r requirements.yml
 
 ## Role Variables
 
