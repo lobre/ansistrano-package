@@ -31,7 +31,7 @@ If you want to update the role, you need to pass --force parameter when installi
 ## Role Variables
 
     - vars:
-      ansistrano_package: "{{ lookup('env','HOME') }}/.ansistrano-package" # Path where the code must be packaged
+      ansistrano_package: "{{ lookup('env','HOME') }}/.ansistrano" # Path where the code must be packaged
       
       ansistrano_shared_paths: [] # Shared paths to symlink to release dir
       ansistrano_shared_files: [] # Shared files to symlink to release dir
