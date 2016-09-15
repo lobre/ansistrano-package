@@ -1,5 +1,5 @@
 ---
-- name: ANSISTRANO | Update remote repository
+- name: ANSISTRANO | Update local git repository
   git:
     repo: "{{ ansistrano_git_repo }}"
     dest: "{{ ansistrano_package }}/repo"
