@@ -1,21 +1,28 @@
 ---
 
 - include: "{{ ansistrano_before_setup_tasks_file | default('empty.yml') }}"
+  run_once: true
 
 - include: setup.yml
+  run_once: true
 
 - include: "{{ ansistrano_after_setup_tasks_file | default('empty.yml') }}"
+  run_once: true
 
 - include: "{{ ansistrano_before_git_tasks_file | default('empty.yml') }}"
+  run_once: true
 
 - include: git.yml
+  run_once: true
 
 - include: "{{ ansistrano_after_git_tasks_file | default('empty.yml') }}"
+  run_once: true
 
 - include: "{{ ansistrano_before_cleanup_tasks_file | default('empty.yml') }}"
+  run_once: true
 
 - include: cleanup.yml
+  run_once: true
 
 - include: "{{ ansistrano_after_cleanup_tasks_file | default('empty.yml') }}"
-
-- set_fact: package_is_created=1
+  run_once: true
