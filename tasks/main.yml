@@ -17,3 +17,5 @@
 - include: cleanup.yml
 
 - include: "{{ ansistrano_after_cleanup_tasks_file | default('empty.yml') }}"
+
+- set_fact: package_is_created=1
